@@ -1,7 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
-const { Log } = require('../logging_middleware/logger');
+const { Log } = require('../logging_middleware/logger.node');
 
 const NOTIFICATION_URL = "http://20.207.122.201/evaluation-service/notifications";
 

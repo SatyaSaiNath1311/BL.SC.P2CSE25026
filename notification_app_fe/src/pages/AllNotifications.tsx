@@ -88,7 +88,7 @@ const AllNotifications: React.FC = () => {
       {error && <Alert severity="error" sx={{ mb: 4, borderRadius: 2 }}>{error}</Alert>}
 
       {loading ? (
-        <Box display="flex" justifyContent="center" py={12}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', py: 12 }}>
           <CircularProgress size={30} thickness={4} />
         </Box>
       ) : (
@@ -114,7 +114,7 @@ const AllNotifications: React.FC = () => {
             )}
           </Box>
 
-          <Box display="flex" justifyContent="center" mb={8}>
+          <Box sx={{ display: 'flex', justifyContent: 'center', mb: 8 }}>
             <Pagination 
               count={10} 
               page={page} 

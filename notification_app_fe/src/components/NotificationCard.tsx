@@ -1,6 +1,4 @@
-import React from 'react';
 import { Card, CardContent, Typography, Box, Chip } from '@mui/material';
-import { format } from 'date-fns';
 
 interface NotificationCardProps {
   id: string;
@@ -47,8 +45,8 @@ const NotificationCard: React.FC<NotificationCardProps> = ({
       }}
     >
       <CardContent sx={{ p: '24px !important' }}>
-        <Box display="flex" justifyContent="space-between" alignItems="center" mb={2.5}>
-          <Box display="flex" alignItems="center" gap={1.5}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2.5 }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
             {!isViewed && (
               <Box 
                 sx={{ 
@@ -92,7 +90,7 @@ const NotificationCard: React.FC<NotificationCardProps> = ({
         </Typography>
 
         {score !== undefined && (
-          <Box mt={1} display="flex" justifyContent="flex-end">
+          <Box sx={{ mt: 1, display: 'flex', justifyContent: 'flex-end' }}>
             <Typography variant="caption" sx={{ fontStyle: 'italic', color: 'text.secondary' }}>
               Priority Score: {score}
             </Typography>

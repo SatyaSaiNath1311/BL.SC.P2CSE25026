@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Container, Typography, Box, CircularProgress, Alert, 
-  Slider, Divider, Stack
+  Slider, Stack
 } from '@mui/material';
 import { getNotifications } from '../api/client';
 import NotificationCard from '../components/NotificationCard';
@@ -77,7 +77,7 @@ const PriorityInbox: React.FC = () => {
       {error && <Alert severity="error" sx={{ mb: 4, borderRadius: 2 }}>{error}</Alert>}
 
       {loading ? (
-        <Box display="flex" justifyContent="center" py={12}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', py: 12 }}>
           <CircularProgress size={30} thickness={4} />
         </Box>
       ) : (
