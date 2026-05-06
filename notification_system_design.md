@@ -20,3 +20,23 @@ Then I just added them together: `Total Score = Weight + Recency Score`.
 
 ### Code logic
 Instead of sorting all the notifications every time (which would be slow if there are thousands of them), I used a min-heap from python's `heapq` module. It keeps track of the top 10 items easily, and whenever a new notification comes in, it just checks if the score is higher than the lowest one in the heap. This makes the code very fast and efficient.
+
+## Stage 2
+
+### Frontend Architecture
+For Stage 2, I built a responsive web application using **React** and **TypeScript**. To make it look clean and professional, I used **Material UI (MUI)** components.
+
+### Features
+1. **Notifications Page**: Displays all notifications with support for pagination and type filtering (Placement, Result, Event) using the updated API parameters.
+2. **Priority Page**: Displays the top ranked notifications using the same logic from Stage 1. I added a slider so you can choose how many top notifications to see.
+3. **Read/Unread Tracking**: I used `localStorage` to keep track of which notifications the user has clicked on. Unread notifications have a blue highlight on the side and bold text.
+4. **Logging**: I created a frontend logging utility that sends logs back to the evaluation server whenever the user loads a page or an API call is made.
+
+### Running the app
+The app is configured to run on `http://localhost:3000`. 
+To start it:
+```bash
+cd notification_app_fe
+npm install
+npm run dev
+```
