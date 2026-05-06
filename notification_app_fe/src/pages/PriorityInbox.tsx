@@ -20,7 +20,7 @@ const PriorityInbox: React.FC = () => {
     if (saved) {
       setViewedIds(new Set(JSON.parse(saved)));
     }
-    log('info', 'page', 'Priority Inbox page loaded');
+    log('frontend', 'info', 'page', 'Priority Inbox page loaded');
     fetchData();
   }, []);
 
@@ -31,11 +31,11 @@ const PriorityInbox: React.FC = () => {
       // Fetch batch to calculate priority
       const data = await getNotifications();
       setNotifications(data.notifications || []);
-      log('info', 'api', 'Fetched batch for priority calculation');
+      log('frontend', 'info', 'api', 'Fetched batch for priority calculation');
     } catch (err: any) {
       const msg = err.response?.data?.message || err.message;
       setError(msg);
-      log('error', 'api', `Failed to fetch priority batch: ${msg}`);
+      log('frontend', 'error', 'api', `Failed to fetch priority batch: ${msg}`);
     } finally {
       setLoading(false);
     }
@@ -46,7 +46,7 @@ const PriorityInbox: React.FC = () => {
     newViewed.add(id);
     setViewedIds(newViewed);
     localStorage.setItem('viewed_notifications', JSON.stringify(Array.from(newViewed)));
-    log('info', 'component', `Priority notification ${id} marked as viewed`);
+    log('frontend', 'info', 'component', `Priority notification ${id} marked as viewed`);
   };
 
   const priorityList = getPriorityNotifications(notifications, limit);

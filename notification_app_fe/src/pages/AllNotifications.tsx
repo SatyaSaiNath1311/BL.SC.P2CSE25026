@@ -22,7 +22,7 @@ const AllNotifications: React.FC = () => {
     if (saved) {
       setViewedIds(new Set(JSON.parse(saved)));
     }
-    log('info', 'page', 'All Notifications page loaded');
+    log('frontend', 'info', 'page', 'All Notifications page loaded');
   }, []);
 
   const fetchData = async () => {
@@ -34,11 +34,11 @@ const AllNotifications: React.FC = () => {
       
       const data = await getNotifications(params);
       setNotifications(data.notifications || []);
-      log('info', 'api', `Fetched ${data.notifications?.length || 0} notifications for page ${page}`);
+      log('frontend', 'info', 'api', `Fetched ${data.notifications?.length || 0} notifications for page ${page}`);
     } catch (err: any) {
       const msg = err.response?.data?.message || err.message;
       setError(msg);
-      log('error', 'api', `Failed to fetch notifications: ${msg}`);
+      log('frontend', 'error', 'api', `Failed to fetch notifications: ${msg}`);
     } finally {
       setLoading(false);
     }
@@ -53,7 +53,7 @@ const AllNotifications: React.FC = () => {
     newViewed.add(id);
     setViewedIds(newViewed);
     localStorage.setItem('viewed_notifications', JSON.stringify(Array.from(newViewed)));
-    log('info', 'component', `Notification ${id} marked as viewed`);
+    log('frontend', 'info', 'component', `Notification ${id} marked as viewed`);
   };
 
   return (
