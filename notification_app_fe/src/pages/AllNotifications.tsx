@@ -5,7 +5,7 @@ import {
 } from '@mui/material';
 import { getNotifications } from '../api/client';
 import NotificationCard from '../components/NotificationCard';
-import { log } from '../utils/logger';
+import { log } from '../logging_middleware/logger';
 
 const AllNotifications: React.FC = () => {
   const [notifications, setNotifications] = useState<any[]>([]);

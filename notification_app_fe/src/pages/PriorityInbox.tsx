@@ -6,7 +6,7 @@ import {
 import { getNotifications } from '../api/client';
 import NotificationCard from '../components/NotificationCard';
 import { getPriorityNotifications } from '../utils/priority';
-import { log } from '../utils/logger';
+import { log } from '../logging_middleware/logger';
 
 const PriorityInbox: React.FC = () => {
   const [notifications, setNotifications] = useState<any[]>([]);
