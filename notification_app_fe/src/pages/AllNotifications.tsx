@@ -58,27 +58,25 @@ const AllNotifications: React.FC = () => {
 
   return (
     <Container maxWidth="sm">
-      <Box sx={{ mb: 6 }}>
-        <Box display="flex" justifyContent="space-between" alignItems="flex-start" mb={3}>
-          <Box>
-            <Typography variant="h4" sx={{ fontWeight: 800, mb: 1 }}>
-              Latest Feed
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Stay updated with everything on campus
-            </Typography>
-          </Box>
-          
-          <FormControl variant="outlined" size="small" sx={{ minWidth: 120 }}>
-            <InputLabel id="type-filter-label">Type</InputLabel>
+      <Box sx={{ mb: 8, mt: 2 }}>
+        <Typography variant="h4" sx={{ fontWeight: 800, mb: 1, color: 'text.primary' }}>
+          Latest Feed
+        </Typography>
+        <Typography variant="body2" color="text.secondary" sx={{ mb: 4 }}>
+          Stay updated with everything on campus
+        </Typography>
+
+        <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
+          <FormControl variant="outlined" size="small" sx={{ minWidth: 160 }}>
+            <InputLabel id="type-filter-label">Filter by Category</InputLabel>
             <Select
               labelId="type-filter-label"
               value={type}
               onChange={(e) => { setType(e.target.value); setPage(1); }}
-              label="Type"
+              label="Filter by Category"
               sx={{ bgcolor: 'white', borderRadius: 2 }}
             >
-              <MenuItem value="All">All Types</MenuItem>
+              <MenuItem value="All">All Categories</MenuItem>
               <MenuItem value="Placement">Placement</MenuItem>
               <MenuItem value="Result">Result</MenuItem>
               <MenuItem value="Event">Event</MenuItem>
