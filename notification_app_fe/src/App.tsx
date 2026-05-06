@@ -46,6 +46,7 @@ const theme = createTheme({
           textTransform: 'none',
           fontWeight: 600,
           borderRadius: 8,
+          padding: '8px 20px',
         }
       }
     },
@@ -53,7 +54,8 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           border: '1px solid #e2e8f0',
-          boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+          boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+          marginBottom: '24px',
         }
       }
     }

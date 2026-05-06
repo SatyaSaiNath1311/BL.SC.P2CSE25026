@@ -34,39 +34,40 @@ const NotificationCard: React.FC<NotificationCardProps> = ({
     <Card 
       onClick={() => onView(id)}
       sx={{ 
-        mb: 2, 
         cursor: 'pointer',
-        borderLeft: isViewed ? '4px solid transparent' : '4px solid #2563eb',
+        borderLeft: isViewed ? '6px solid transparent' : '6px solid #2563eb',
         backgroundColor: isViewed ? 'background.paper' : '#f8faff',
-        transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+        mb: 3,
         '&:hover': {
-          transform: 'translateY(-2px)',
-          boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
-          backgroundColor: isViewed ? '#fcfcfc' : '#f0f7ff'
+          transform: 'translateY(-4px)',
+          boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
+          backgroundColor: isViewed ? '#fdfdfd' : '#f1f5ff'
         }
       }}
     >
-      <CardContent sx={{ p: '20px !important' }}>
-        <Box display="flex" justifyContent="space-between" alignItems="flex-start" mb={1.5}>
-          <Box display="flex" alignItems="center" gap={1}>
+      <CardContent sx={{ p: '24px !important' }}>
+        <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+          <Box display="flex" alignItems="center" gap={1.5}>
             <Chip 
               label={type} 
               color={getTypeColor(type) as any} 
               size="small" 
-              sx={{ fontWeight: 600, fontSize: '0.7rem' }}
+              sx={{ fontWeight: 700, fontSize: '0.75rem', px: 1 }}
             />
             {!isViewed && (
               <Box 
                 sx={{ 
-                  width: 8, 
-                  height: 8, 
+                  width: 10, 
+                  height: 10, 
                   borderRadius: '50%', 
-                  bgcolor: '#2563eb' 
+                  bgcolor: '#2563eb',
+                  boxShadow: '0 0 0 4px rgba(37, 99, 235, 0.1)'
                 }} 
               />
             )}
           </Box>
-          <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 500 }}>
+          <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, letterSpacing: '0.02em' }}>
             {timestamp}
           </Typography>
         </Box>
@@ -75,8 +76,9 @@ const NotificationCard: React.FC<NotificationCardProps> = ({
           variant="body1" 
           sx={{ 
             color: 'text.primary',
-            fontSize: '1rem',
+            fontSize: '1.05rem',
             lineHeight: 1.6,
+            letterSpacing: '-0.01em',
             fontWeight: isViewed ? 400 : 600 
           }}
         >
