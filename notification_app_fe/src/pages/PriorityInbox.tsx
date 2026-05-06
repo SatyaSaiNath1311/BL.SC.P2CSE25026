@@ -29,7 +29,7 @@ const PriorityInbox: React.FC = () => {
     setError(null);
     try {
       // Fetch a batch to calculate priority across items
-      const data = await getNotifications({ limit: 20 });
+      const data = await getNotifications({ limit: 10 });
       setNotifications(data.notifications || []);
       log('info', 'api', 'Fetched batch for priority calculation');
     } catch (err: any) {
