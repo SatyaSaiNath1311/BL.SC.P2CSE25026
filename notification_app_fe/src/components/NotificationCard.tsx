@@ -36,28 +36,50 @@ const NotificationCard: React.FC<NotificationCardProps> = ({
       sx={{ 
         mb: 2, 
         cursor: 'pointer',
-        borderLeft: isViewed ? 'none' : '5px solid #1976d2',
-        backgroundColor: isViewed ? 'inherit' : '#f0f7ff',
-        transition: 'all 0.2s',
+        borderLeft: isViewed ? '4px solid transparent' : '4px solid #2563eb',
+        backgroundColor: isViewed ? 'background.paper' : '#f8faff',
+        transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
         '&:hover': {
-          boxShadow: 3,
-          backgroundColor: isViewed ? '#f5f5f5' : '#e3f2fd'
+          transform: 'translateY(-2px)',
+          boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+          backgroundColor: isViewed ? '#fcfcfc' : '#f0f7ff'
         }
       }}
     >
-      <CardContent>
-        <Box display="flex" justifyContent="space-between" alignItems="center" mb={1}>
-          <Chip 
-            label={type} 
-            color={getTypeColor(type) as any} 
-            size="small" 
-          />
-          <Typography variant="caption" color="text.secondary">
+      <CardContent sx={{ p: '20px !important' }}>
+        <Box display="flex" justifyContent="space-between" alignItems="flex-start" mb={1.5}>
+          <Box display="flex" alignItems="center" gap={1}>
+            <Chip 
+              label={type} 
+              color={getTypeColor(type) as any} 
+              size="small" 
+              sx={{ fontWeight: 600, fontSize: '0.7rem' }}
+            />
+            {!isViewed && (
+              <Box 
+                sx={{ 
+                  width: 8, 
+                  height: 8, 
+                  borderRadius: '50%', 
+                  bgcolor: '#2563eb' 
+                }} 
+              />
+            )}
+          </Box>
+          <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 500 }}>
             {timestamp}
           </Typography>
         </Box>
         
-        <Typography variant="body1" fontWeight={isViewed ? 'normal' : 'bold'}>
+        <Typography 
+          variant="body1" 
+          sx={{ 
+            color: 'text.primary',
+            fontSize: '1rem',
+            lineHeight: 1.6,
+            fontWeight: isViewed ? 400 : 600 
+          }}
+        >
           {message}
         </Typography>
 

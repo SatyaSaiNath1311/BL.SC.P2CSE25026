@@ -52,39 +52,42 @@ const PriorityInbox: React.FC = () => {
   const priorityList = getPriorityNotifications(notifications, limit);
 
   return (
-    <Container maxWidth="md">
-      <Box mb={4}>
-        <Typography variant="h4" fontWeight="bold" gutterBottom>Priority Inbox</Typography>
+    <Container maxWidth="sm">
+      <Box mb={5}>
+        <Typography variant="h4" gutterBottom>Priority Inbox</Typography>
         <Typography variant="body2" color="text.secondary">
-          Notifications ranked by relevance: Placement (3x) &gt; Result (2x) &gt; Event (1x) plus recency.
+          Smart ranking based on category importance and time.
         </Typography>
       </Box>
 
-      <Box sx={{ px: 2, mb: 4, py: 2, bgcolor: '#fafafa', borderRadius: 2 }}>
-        <Typography gutterBottom variant="subtitle2">Show Top {limit} Notifications</Typography>
+      <Box sx={{ p: 3, mb: 5, bgcolor: '#ffffff', borderRadius: 3, border: '1px solid #e2e8f0' }}>
+        <Typography gutterBottom variant="subtitle2" sx={{ mb: 2, display: 'block' }}>
+          Showing top <strong>{limit}</strong> priority items
+        </Typography>
         <Slider
           value={limit}
           min={1}
           max={20}
           step={1}
-          marks
           valueLabelDisplay="auto"
           onChange={(_, v) => setLimit(v as number)}
+          sx={{ color: 'primary.main' }}
         />
       </Box>
 
-      {error && <Alert severity="error" sx={{ mb: 3 }}>{error}</Alert>}
+      {error && <Alert severity="error" sx={{ mb: 4, borderRadius: 2 }}>{error}</Alert>}
 
       {loading ? (
-        <Box display="flex" justifyContent="center" py={10}>
-          <CircularProgress />
+        <Box display="flex" justifyContent="center" py={12}>
+          <CircularProgress size={30} thickness={4} />
         </Box>
       ) : (
-        <Stack spacing={2}>
+        <Stack spacing={2} sx={{ mb: 8 }}>
           {priorityList.length === 0 ? (
-            <Typography variant="body1" color="text.secondary" textAlign="center">
-              No notifications to rank.
-            </Typography>
+            <Box sx={{ textAlign: 'center', py: 8 }}>
+              <Typography variant="h6" color="text.secondary">Empty inbox</Typography>
+              <Typography variant="body2" color="text.disabled">No high-priority items at the moment</Typography>
+            </Box>
           ) : (
             priorityList.map((n: any) => (
               <NotificationCard
@@ -101,7 +104,6 @@ const PriorityInbox: React.FC = () => {
           )}
         </Stack>
       )}
-      <Box mb={6} />
     </Container>
   );
 };

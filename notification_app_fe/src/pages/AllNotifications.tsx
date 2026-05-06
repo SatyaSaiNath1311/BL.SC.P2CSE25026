@@ -57,16 +57,24 @@ const AllNotifications: React.FC = () => {
   };
 
   return (
-    <Container maxWidth="md">
-      <Box display="flex" justifyContent="space-between" alignItems="center" mb={4}>
-        <Typography variant="h4" fontWeight="bold">Notifications</Typography>
+    <Container maxWidth="sm">
+      <Box display="flex" justifyContent="space-between" alignItems="center" mb={5}>
+        <Box>
+          <Typography variant="h4" gutterBottom>
+            Latest Feed
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Stay updated with everything on campus
+          </Typography>
+        </Box>
         
-        <FormControl variant="outlined" size="small" sx={{ minWidth: 150 }}>
-          <InputLabel>Filter Type</InputLabel>
+        <FormControl variant="outlined" size="small" sx={{ minWidth: 140 }}>
+          <InputLabel>Type</InputLabel>
           <Select
             value={type}
             onChange={(e) => { setType(e.target.value); setPage(1); }}
-            label="Filter Type"
+            label="Type"
+            sx={{ bgcolor: 'white' }}
           >
             <MenuItem value="All">All Types</MenuItem>
             <MenuItem value="Placement">Placement</MenuItem>
@@ -76,38 +84,42 @@ const AllNotifications: React.FC = () => {
         </FormControl>
       </Box>
 
-      {error && <Alert severity="error" sx={{ mb: 3 }}>{error}</Alert>}
+      {error && <Alert severity="error" sx={{ mb: 4, borderRadius: 2 }}>{error}</Alert>}
 
       {loading ? (
-        <Box display="flex" justifyContent="center" py={10}>
-          <CircularProgress />
+        <Box display="flex" justifyContent="center" py={12}>
+          <CircularProgress size={30} thickness={4} />
         </Box>
       ) : (
         <>
-          {notifications.length === 0 ? (
-            <Typography variant="body1" color="text.secondary" textAlign="center">
-              No notifications found.
-            </Typography>
-          ) : (
-            notifications.map((n) => (
-              <NotificationCard
-                key={n.ID}
-                id={n.ID}
-                type={n.Type}
-                message={n.Message}
-                timestamp={n.Timestamp}
-                isViewed={viewedIds.has(n.ID)}
-                onView={handleView}
-              />
-            ))
-          )}
+          <Box sx={{ mb: 4 }}>
+            {notifications.length === 0 ? (
+              <Box sx={{ textAlign: 'center', py: 8 }}>
+                <Typography variant="h6" color="text.secondary">No updates found</Typography>
+                <Typography variant="body2" color="text.disabled">Try changing your filters</Typography>
+              </Box>
+            ) : (
+              notifications.map((n) => (
+                <NotificationCard
+                  key={n.ID}
+                  id={n.ID}
+                  type={n.Type}
+                  message={n.Message}
+                  timestamp={n.Timestamp}
+                  isViewed={viewedIds.has(n.ID)}
+                  onView={handleView}
+                />
+              ))
+            )}
+          </Box>
 
-          <Box display="flex" justifyContent="center" mt={4} mb={6}>
+          <Box display="flex" justifyContent="center" mb={8}>
             <Pagination 
               count={10} 
               page={page} 
               onChange={(_, v) => setPage(v)} 
               color="primary" 
+              size="large"
             />
           </Box>
         </>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://20.207.122.201/evaluation-service';
+const API_URL = '/api-proxy/evaluation-service';
 
 export const getNotifications = async (params: { limit?: number; page?: number; notification_type?: string } = {}) => {
   const token = import.meta.env.VITE_AUTH_TOKEN;

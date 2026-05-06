@@ -1,4 +1,4 @@
-const LOG_URL = "http://20.207.122.201/evaluation-service/logs";
+const LOG_URL = "/api-proxy/evaluation-service/logs";
 
 type LogLevel = "debug" | "info" | "warn" | "error" | "fatal";
 type LogPackage = "api" | "component" | "hook" | "page" | "state" | "style" | "utils" | "middleware" | "auth" | "config";

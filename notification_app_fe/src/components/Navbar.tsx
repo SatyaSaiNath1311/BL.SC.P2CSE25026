@@ -8,39 +8,49 @@ const Navbar: React.FC = () => {
   const location = useLocation();
 
   return (
-    <AppBar position="static" sx={{ mb: 4 }}>
+    <AppBar 
+      position="sticky" 
+      elevation={0} 
+      sx={{ 
+        mb: 6, 
+        bgcolor: 'white', 
+        color: 'text.primary',
+        borderBottom: '1px solid #e2e8f0'
+      }}
+    >
       <Container maxWidth="lg">
-        <Toolbar disableGutters>
+        <Toolbar disableGutters sx={{ height: 70 }}>
           <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', fontWeight: 'bold' }}
+            variant="h5"
+            sx={{ 
+              flexGrow: 1, 
+              display: 'flex', 
+              alignItems: 'center', 
+              fontWeight: 800,
+              color: 'primary.main',
+              letterSpacing: '-0.02em'
+            }}
           >
-            Campus Connect
+            CampusConnect
           </Typography>
-          <Box>
+          <Box sx={{ display: 'flex', gap: 1 }}>
             <Button
               component={RouterLink}
               to="/"
-              color="inherit"
+              variant={location.pathname === '/' ? 'contained' : 'text'}
+              color={location.pathname === '/' ? 'primary' : 'inherit'}
               startIcon={<NotificationsIcon />}
-              sx={{ 
-                mr: 1,
-                borderBottom: location.pathname === '/' ? '2px solid white' : 'none',
-                borderRadius: 0
-              }}
+              disableElevation
             >
               All
             </Button>
             <Button
               component={RouterLink}
               to="/priority"
-              color="inherit"
+              variant={location.pathname === '/priority' ? 'contained' : 'text'}
+              color={location.pathname === '/priority' ? 'primary' : 'inherit'}
               startIcon={<StarIcon />}
-              sx={{ 
-                borderBottom: location.pathname === '/priority' ? '2px solid white' : 'none',
-                borderRadius: 0
-              }}
+              disableElevation
             >
               Priority
             </Button>
