@@ -7,6 +7,7 @@ import urllib.request
 import urllib.error
 from datetime import datetime
 
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from logging_middleware import logger
 
 NOTIFICATION_URL = "http://20.207.122.201/evaluation-service/notifications"
