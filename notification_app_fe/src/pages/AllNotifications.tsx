@@ -58,30 +58,33 @@ const AllNotifications: React.FC = () => {
 
   return (
     <Container maxWidth="sm">
-      <Box display="flex" justifyContent="space-between" alignItems="center" mb={5}>
-        <Box>
-          <Typography variant="h4" gutterBottom>
-            Latest Feed
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Stay updated with everything on campus
-          </Typography>
+      <Box sx={{ mb: 6 }}>
+        <Box display="flex" justifyContent="space-between" alignItems="flex-start" mb={3}>
+          <Box>
+            <Typography variant="h4" sx={{ fontWeight: 800, mb: 1 }}>
+              Latest Feed
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Stay updated with everything on campus
+            </Typography>
+          </Box>
+          
+          <FormControl variant="outlined" size="small" sx={{ minWidth: 120 }}>
+            <InputLabel id="type-filter-label">Type</InputLabel>
+            <Select
+              labelId="type-filter-label"
+              value={type}
+              onChange={(e) => { setType(e.target.value); setPage(1); }}
+              label="Type"
+              sx={{ bgcolor: 'white', borderRadius: 2 }}
+            >
+              <MenuItem value="All">All Types</MenuItem>
+              <MenuItem value="Placement">Placement</MenuItem>
+              <MenuItem value="Result">Result</MenuItem>
+              <MenuItem value="Event">Event</MenuItem>
+            </Select>
+          </FormControl>
         </Box>
-        
-        <FormControl variant="outlined" size="small" sx={{ minWidth: 140 }}>
-          <InputLabel>Type</InputLabel>
-          <Select
-            value={type}
-            onChange={(e) => { setType(e.target.value); setPage(1); }}
-            label="Type"
-            sx={{ bgcolor: 'white' }}
-          >
-            <MenuItem value="All">All Types</MenuItem>
-            <MenuItem value="Placement">Placement</MenuItem>
-            <MenuItem value="Result">Result</MenuItem>
-            <MenuItem value="Event">Event</MenuItem>
-          </Select>
-        </FormControl>
       </Box>
 
       {error && <Alert severity="error" sx={{ mb: 4, borderRadius: 2 }}>{error}</Alert>}

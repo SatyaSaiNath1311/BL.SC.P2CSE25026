@@ -53,8 +53,8 @@ const PriorityInbox: React.FC = () => {
 
   return (
     <Container maxWidth="sm">
-      <Box mb={5}>
-        <Typography variant="h4" gutterBottom>Priority Inbox</Typography>
+      <Box sx={{ mb: 7 }}>
+        <Typography variant="h4" sx={{ fontWeight: 800, mb: 1 }}>Priority Inbox</Typography>
         <Typography variant="body2" color="text.secondary">
           Smart ranking based on category importance and time.
         </Typography>

@@ -47,25 +47,31 @@ const NotificationCard: React.FC<NotificationCardProps> = ({
       }}
     >
       <CardContent sx={{ p: '24px !important' }}>
-        <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+        <Box display="flex" justifyContent="space-between" alignItems="center" mb={2.5}>
           <Box display="flex" alignItems="center" gap={1.5}>
-            <Chip 
-              label={type} 
-              color={getTypeColor(type) as any} 
-              size="small" 
-              sx={{ fontWeight: 700, fontSize: '0.75rem', px: 1 }}
-            />
             {!isViewed && (
               <Box 
                 sx={{ 
                   width: 10, 
                   height: 10, 
                   borderRadius: '50%', 
-                  bgcolor: '#2563eb',
-                  boxShadow: '0 0 0 4px rgba(37, 99, 235, 0.1)'
+                  bgcolor: 'primary.main',
+                  boxShadow: '0 0 8px rgba(37, 99, 235, 0.4)'
                 }} 
               />
             )}
+            <Chip 
+              label={type} 
+              color={getTypeColor(type) as any} 
+              size="small" 
+              sx={{ 
+                fontWeight: 700, 
+                fontSize: '0.65rem', 
+                height: 22,
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em'
+              }}
+            />
           </Box>
           <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, letterSpacing: '0.02em' }}>
             {timestamp}
