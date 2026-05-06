@@ -23,8 +23,16 @@ Instead of sorting all the notifications every time (which would be slow if ther
 
 ## Stage 2
 
-### Frontend Architecture
-For Stage 2, I built a responsive web application using **React** and **TypeScript**. To make it look clean and professional, I used **Material UI (MUI)** components.
+## Technology Stack
+- **Frontend**: React, TypeScript, Material UI, Vite
+- **Backend (Scripts)**: Node.js (JavaScript)
+- **Shared Middleware**: JavaScript/TypeScript
+- **Evaluation Server**: HTTP API-based logging and notification feed
+
+## Architecture Components
+1. **Logging Middleware (`logging_middleware/`)**: A shared module used by both the Node.js backend and React frontend to report application lifecycle events.
+2. **Backend Script (`notification_app_be/`)**: A Node.js application that fetches campus notifications and ranks them using a priority scoring algorithm.
+3. **Frontend Application (`notification_app_fe/`)**: A modern React-based dashboard for viewing the campus feed and ranked priority items.
 
 ### Features
 1. **Notifications Page**: Displays all notifications with support for pagination and type filtering (Placement, Result, Event) using the updated API parameters.

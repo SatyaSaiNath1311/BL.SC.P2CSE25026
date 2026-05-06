@@ -3,7 +3,7 @@ const LOG_URL = "/api-proxy/evaluation-service/logs";
 type LogLevel = "debug" | "info" | "warn" | "error" | "fatal";
 type LogPackage = "api" | "component" | "hook" | "page" | "state" | "style" | "utils" | "middleware" | "auth" | "config";
 
-export const log = async (stack: "frontend" | "backend", level: LogLevel, pkg: LogPackage, message: string) => {
+export const Log = async (stack: "frontend" | "backend", level: LogLevel, pkg: LogPackage, message: string) => {
   const token = import.meta.env.VITE_AUTH_TOKEN;
   
   if (!token) {

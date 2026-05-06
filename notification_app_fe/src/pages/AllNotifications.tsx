@@ -5,7 +5,7 @@ import {
 } from '@mui/material';
 import { getNotifications } from '../api/client';
 import NotificationCard from '../components/NotificationCard';
-import { log } from '../logging_middleware/logger';
+import { Log } from '../logging_middleware/logger';
 
 const AllNotifications: React.FC = () => {
   const [notifications, setNotifications] = useState<any[]>([]);
@@ -22,7 +22,7 @@ const AllNotifications: React.FC = () => {
     if (saved) {
       setViewedIds(new Set(JSON.parse(saved)));
     }
-    log('frontend', 'info', 'page', 'All Notifications page loaded');
+    Log('frontend', 'info', 'page', 'All Notifications page loaded');
   }, []);
 
   const fetchData = async () => {
@@ -34,11 +34,11 @@ const AllNotifications: React.FC = () => {
       
       const data = await getNotifications(params);
       setNotifications(data.notifications || []);
-      log('frontend', 'info', 'api', `Fetched ${data.notifications?.length || 0} notifications for page ${page}`);
+      Log('frontend', 'info', 'api', `Fetched ${data.notifications?.length || 0} notifications for page ${page}`);
     } catch (err: any) {
       const msg = err.response?.data?.message || err.message;
       setError(msg);
-      log('frontend', 'error', 'api', `Failed to fetch notifications: ${msg}`);
+      Log('frontend', 'error', 'api', `Failed to fetch notifications: ${msg}`);
     } finally {
       setLoading(false);
     }
@@ -53,7 +53,7 @@ const AllNotifications: React.FC = () => {
     newViewed.add(id);
     setViewedIds(newViewed);
     localStorage.setItem('viewed_notifications', JSON.stringify(Array.from(newViewed)));
-    log('frontend', 'info', 'component', `Notification ${id} marked as viewed`);
+    Log('frontend', 'info', 'component', `Notification ${id} marked as viewed`);
   };
 
   return (
