@@ -6,7 +6,7 @@ import {
 import { getNotifications } from '../api/client';
 import NotificationCard from '../components/NotificationCard';
 import { getPriorityNotifications } from '../utils/priority';
-import { log } from '../logging_middleware/logger';
+import { Log } from '../logging_middleware/logger';
 
 const PriorityInbox: React.FC = () => {
   const [notifications, setNotifications] = useState<any[]>([]);
@@ -20,7 +20,7 @@ const PriorityInbox: React.FC = () => {
     if (saved) {
       setViewedIds(new Set(JSON.parse(saved)));
     }
-    log('frontend', 'info', 'page', 'Priority Inbox page loaded');
+    Log('frontend', 'info', 'page', 'Priority Inbox page loaded');
     fetchData();
   }, []);
 
@@ -30,11 +30,11 @@ const PriorityInbox: React.FC = () => {
     try {
       const data = await getNotifications();
       setNotifications(data.notifications || []);
-      log('frontend', 'info', 'api', 'Fetched batch for priority calculation');
+      Log('frontend', 'info', 'api', 'Fetched batch for priority calculation');
     } catch (err: any) {
       const msg = err.response?.data?.message || err.message;
       setError(msg);
-      log('frontend', 'error', 'api', `Failed to fetch priority batch: ${msg}`);
+      Log('frontend', 'error', 'api', `Failed to fetch priority batch: ${msg}`);
     } finally {
       setLoading(false);
     }
@@ -45,7 +45,7 @@ const PriorityInbox: React.FC = () => {
     newViewed.add(id);
     setViewedIds(newViewed);
     localStorage.setItem('viewed_notifications', JSON.stringify(Array.from(newViewed)));
-    log('frontend', 'info', 'component', `Notification ${id} marked as viewed`);
+    Log('frontend', 'info', 'component', `Notification ${id} marked as viewed`);
   };
 
   const priorityList = getPriorityNotifications(notifications, limit);
